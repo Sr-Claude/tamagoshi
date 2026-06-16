@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamagotchi Virtual</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🐾 Tamagotchi Virtual 🐾</h1>
+        
+        <div class="tamagotchi">
+            <div class="screen">
+                <div class="pet-display">
+                    <div id="pet" class="pet">🐣</div>
+                    <div id="petName" class="pet-name"></div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <span>❤️</span>
+                        <div class="stat-bar">
+                            <div id="healthBar" class="stat-fill health"></div>
+                        </div>
+                        <span id="healthValue">100</span>
+                    </div>
+                    <div class="stat">
+                        <span>🍔</span>
+                        <div class="stat-bar">
+                            <div id="hungerBar" class="stat-fill hunger"></div>
+                        </div>
+                        <span id="hungerValue">100</span>
+                    </div>
+                    <div class="stat">
+                        <span>😊</span>
+                        <div class="stat-bar">
+                            <div id="happinessBar" class="stat-fill happiness"></div>
+                        </div>
+                        <span id="happinessValue">100</span>
+                    </div>
+                    <div class="stat">
+                        <span>⚡</span>
+                        <div class="stat-bar">
+                            <div id="energyBar" class="stat-fill energy"></div>
+                        </div>
+                        <span id="energyValue">100</span>
+                    </div>
+                </div>
+                
+                <div id="message" class="message">¡Cuida bien de tu mascota!</div>
+            </div>
+            
+            <div class="buttons">
+                <button onclick="feed()" class="btn feed-btn">🍔 Alimentar</button>
+                <button onclick="play()" class="btn play-btn">⚽ Jugar</button>
+                <button onclick="sleep()" class="btn sleep-btn">😴 Dormir</button>
+                <button onclick="heal()" class="btn heal-btn">💊 Curar</button>
+            </div>
+            
+            <div class="controls">
+                <button onclick="resetGame()" class="reset-btn">🔄 Reiniciar</button>
+                <button onclick="changeName()" class="name-btn">✏️ Nombre</button>
+            </div>
+        </div>
+        
+        <div class="info">
+            <p>💡 Consejos: Mantén todas las estadísticas por encima de 0 para que tu mascota sea feliz.</p>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

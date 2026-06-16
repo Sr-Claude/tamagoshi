@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+    font-size: 2em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.tamagotchi {
+    background: white;
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    border: 5px solid #ff6b9d;
+}
+
+.screen {
+    background: linear-gradient(to bottom, #e8f4f8, #d1e8f0);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 3px solid #4a90e2;
+    min-height: 300px;
+}
+
+.pet-display {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.pet {
+    font-size: 80px;
+    animation: bounce 2s infinite;
+    display: inline-block;
+}
+
+.pet-name {
+    font-size: 1.5em;
+    color: #333;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.stats {
+    margin-bottom: 20px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 10px;
+}
+
+.stat span:first-child {
+    font-size: 1.3em;
+    width: 30px;
+}
+
+.stat-bar {
+    flex: 1;
+    height: 20px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #ddd;
+}
+
+.stat-fill {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.3s ease;
+}
+
+.health { background: linear-gradient(90deg, #ff4444, #ff6b6b); }
+.hunger { background: linear-gradient(90deg, #ffa500, #ffb732); }
+.happiness { background: linear-gradient(90deg, #ffd700, #ffed4a); }
+.energy { background: linear-gradient(90deg, #4a90e2, #67b8e3); }
+
+.stat span:last-child {
+    width: 35px;
+    text-align: right;
+    font-weight: bold;
+    color: #555;
+}
+
+.message {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+    min-height: 20px;
+    font-size: 0.9em;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.feed-btn { background: #ffa500; }
+.play-btn { background: #4a90e2; }
+.sleep-btn { background: #7c5cbf; }
+.heal-btn { background: #ff4444; }
+
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+.reset-btn, .name-btn {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    background: white;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+.reset-btn:hover, .name-btn:hover {
+    background: #f0f0f0;
+}
+
+.info {
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    background: rgba(255,255,255,0.2);
+    padding: 15px;
+    border-radius: 15px;
+}
