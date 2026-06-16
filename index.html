@@ -2,73 +2,343 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamagotchi Virtual</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>🐾 Tamagotchi Épico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🐾 Tamagotchi Virtual 🐾</h1>
-        
-        <div class="tamagotchi">
-            <div class="screen">
-                <div class="pet-display">
-                    <div id="pet" class="pet">🐣</div>
-                    <div id="petName" class="pet-name"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  PANTALLA 1: SELECCIÓN DE MASCOTA         -->
+<!-- ══════════════════════════════════════════ -->
+<div id="screen-select" class="screen-container active">
+    <div class="select-bg-particles" id="selectParticles"></div>
+    <div class="select-content">
+        <div class="title-badge">🐾 TAMAGOTCHI ÉPICO 🐾</div>
+        <h1 class="select-title">¡Elige tu<br><span class="title-highlight">Compañero!</span></h1>
+        <p class="select-subtitle">Cuídalo, juega con él y hazlo feliz ✨</p>
+
+        <div class="pet-cards">
+            <!-- JAKE -->
+            <div class="pet-card" id="card-jake" onclick="selectPet('jake')">
+                <div class="card-glow jake-glow"></div>
+                <div class="pet-preview jake-preview">
+                    <svg class="pet-svg jake-svg" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Cuerpo de Jake -->
+                        <ellipse cx="60" cy="90" rx="35" ry="30" fill="#F4D03F"/>
+                        <!-- Cabeza -->
+                        <ellipse cx="60" cy="52" rx="32" ry="28" fill="#F4D03F"/>
+                        <!-- Orejas -->
+                        <ellipse cx="32" cy="35" rx="10" ry="18" fill="#F4D03F" transform="rotate(-15 32 35)"/>
+                        <ellipse cx="88" cy="35" rx="10" ry="18" fill="#F4D03F" transform="rotate(15 88 35)"/>
+                        <!-- Interior orejas -->
+                        <ellipse cx="32" cy="35" rx="6" ry="12" fill="#E8C43D" transform="rotate(-15 32 35)"/>
+                        <ellipse cx="88" cy="35" rx="6" ry="12" fill="#E8C43D" transform="rotate(15 88 35)"/>
+                        <!-- Ojos -->
+                        <circle cx="47" cy="48" r="9" fill="white"/>
+                        <circle cx="73" cy="48" r="9" fill="white"/>
+                        <circle cx="49" cy="49" r="5" fill="#222"/>
+                        <circle cx="75" cy="49" r="5" fill="#222"/>
+                        <circle cx="51" cy="47" r="2" fill="white"/>
+                        <circle cx="77" cy="47" r="2" fill="white"/>
+                        <!-- Nariz -->
+                        <ellipse cx="60" cy="60" rx="5" ry="3" fill="#222"/>
+                        <!-- Boca sonrisa -->
+                        <path d="M 50 65 Q 60 73 70 65" stroke="#222" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <!-- Patas -->
+                        <rect x="30" y="112" width="16" height="22" rx="8" fill="#F4D03F"/>
+                        <rect x="74" y="112" width="16" height="22" rx="8" fill="#F4D03F"/>
+                        <!-- Cola -->
+                        <path d="M 90 85 Q 115 70 108 55" stroke="#F4D03F" stroke-width="10" fill="none" stroke-linecap="round"/>
+                    </svg>
                 </div>
-                
-                <div class="stats">
-                    <div class="stat">
-                        <span>❤️</span>
-                        <div class="stat-bar">
-                            <div id="healthBar" class="stat-fill health"></div>
-                        </div>
-                        <span id="healthValue">100</span>
-                    </div>
-                    <div class="stat">
-                        <span>🍔</span>
-                        <div class="stat-bar">
-                            <div id="hungerBar" class="stat-fill hunger"></div>
-                        </div>
-                        <span id="hungerValue">100</span>
-                    </div>
-                    <div class="stat">
-                        <span>😊</span>
-                        <div class="stat-bar">
-                            <div id="happinessBar" class="stat-fill happiness"></div>
-                        </div>
-                        <span id="happinessValue">100</span>
-                    </div>
-                    <div class="stat">
-                        <span>⚡</span>
-                        <div class="stat-bar">
-                            <div id="energyBar" class="stat-fill energy"></div>
-                        </div>
-                        <span id="energyValue">100</span>
-                    </div>
+                <div class="card-info">
+                    <h3 class="card-name">Jake el Perro</h3>
+                    <p class="card-origin">🎒 Hora de Aventura</p>
+                    <p class="card-ability">✨ ¡Se estira hasta el infinito!</p>
                 </div>
-                
-                <div id="message" class="message">¡Cuida bien de tu mascota!</div>
+                <div class="card-select-btn">¡ELEGIR!</div>
             </div>
-            
-            <div class="buttons">
-                <button onclick="feed()" class="btn feed-btn">🍔 Alimentar</button>
-                <button onclick="play()" class="btn play-btn">⚽ Jugar</button>
-                <button onclick="sleep()" class="btn sleep-btn">😴 Dormir</button>
-                <button onclick="heal()" class="btn heal-btn">💊 Curar</button>
+
+            <!-- MIAU (Meowth) -->
+            <div class="pet-card" id="card-miau" onclick="selectPet('miau')">
+                <div class="card-glow miau-glow"></div>
+                <div class="pet-preview miau-preview">
+                    <svg class="pet-svg miau-svg" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Cuerpo -->
+                        <ellipse cx="60" cy="95" rx="30" ry="28" fill="#F5E6C8"/>
+                        <!-- Cabeza -->
+                        <ellipse cx="60" cy="55" rx="30" ry="28" fill="#F5E6C8"/>
+                        <!-- Orejas puntiagudas -->
+                        <polygon points="35,32 28,8 48,22" fill="#F5E6C8"/>
+                        <polygon points="85,32 92,8 72,22" fill="#F5E6C8"/>
+                        <polygon points="37,30 32,14 46,23" fill="#FFB7C5"/>
+                        <polygon points="83,30 88,14 74,23" fill="#FFB7C5"/>
+                        <!-- Moneda dorada en frente -->
+                        <circle cx="60" cy="34" r="9" fill="#FFD700"/>
+                        <circle cx="60" cy="34" r="7" fill="#FFC200"/>
+                        <text x="60" y="38" text-anchor="middle" font-size="8" fill="#B8860B" font-weight="bold">$</text>
+                        <!-- Ojos -->
+                        <ellipse cx="46" cy="52" rx="9" ry="10" fill="#2c5f2e"/>
+                        <ellipse cx="74" cy="52" rx="9" ry="10" fill="#2c5f2e"/>
+                        <ellipse cx="46" cy="53" rx="4" ry="7" fill="#111"/>
+                        <ellipse cx="74" cy="53" rx="4" ry="7" fill="#111"/>
+                        <circle cx="48" cy="49" r="2.5" fill="white"/>
+                        <circle cx="76" cy="49" r="2.5" fill="white"/>
+                        <!-- Nariz -->
+                        <polygon points="60,62 56,67 64,67" fill="#FF8FA3"/>
+                        <!-- Bigotes -->
+                        <line x1="20" y1="63" x2="50" y2="65" stroke="#888" stroke-width="1.5"/>
+                        <line x1="20" y1="68" x2="50" y2="68" stroke="#888" stroke-width="1.5"/>
+                        <line x1="70" y1="65" x2="100" y2="63" stroke="#888" stroke-width="1.5"/>
+                        <line x1="70" y1="68" x2="100" y2="68" stroke="#888" stroke-width="1.5"/>
+                        <!-- Boca -->
+                        <path d="M 53 70 Q 60 76 67 70" stroke="#888" stroke-width="2" fill="none"/>
+                        <!-- Patas -->
+                        <ellipse cx="40" cy="118" rx="12" ry="10" fill="#F5E6C8"/>
+                        <ellipse cx="80" cy="118" rx="12" ry="10" fill="#F5E6C8"/>
+                        <!-- Cola curva -->
+                        <path d="M 88 90 Q 118 75 112 50 Q 108 30 95 35" stroke="#F5E6C8" stroke-width="9" fill="none" stroke-linecap="round"/>
+                        <!-- Marcas negras en cola -->
+                        <path d="M 88 90 Q 118 75 112 50 Q 108 30 95 35" stroke="#DDD" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="6,8"/>
+                    </svg>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-name">Miau</h3>
+                    <p class="card-origin">⚡ Pokémon — Equipo Rocket</p>
+                    <p class="card-ability">💰 ¡Lanza monedas de oro!</p>
+                </div>
+                <div class="card-select-btn">¡ELEGIR!</div>
             </div>
-            
-            <div class="controls">
-                <button onclick="resetGame()" class="reset-btn">🔄 Reiniciar</button>
-                <button onclick="changeName()" class="name-btn">✏️ Nombre</button>
+
+            <!-- COCO -->
+            <div class="pet-card" id="card-coco" onclick="selectPet('coco')">
+                <div class="card-glow coco-glow"></div>
+                <div class="pet-preview coco-preview">
+                    <svg class="pet-svg coco-svg" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Tronco/Cuerpo tipo palmera -->
+                        <rect x="50" y="95" width="20" height="45" rx="10" fill="#8B6914"/>
+                        <!-- Hojas de palmera (alas) -->
+                        <ellipse cx="25" cy="80" rx="28" ry="10" fill="#2ECC40" transform="rotate(-30 25 80)"/>
+                        <ellipse cx="95" cy="80" rx="28" ry="10" fill="#2ECC40" transform="rotate(30 95 80)"/>
+                        <ellipse cx="35" cy="65" rx="25" ry="8" fill="#27AE60" transform="rotate(-50 35 65)"/>
+                        <ellipse cx="85" cy="65" rx="25" ry="8" fill="#27AE60" transform="rotate(50 85 65)"/>
+                        <!-- Cuerpo pájaro -->
+                        <ellipse cx="60" cy="88" rx="22" ry="18" fill="#FF6B35"/>
+                        <!-- Cabeza -->
+                        <ellipse cx="60" cy="62" rx="24" ry="22" fill="#FF6B35"/>
+                        <!-- Pico -->
+                        <polygon points="60,72 45,68 60,80" fill="#FFD700"/>
+                        <!-- Ojos grandes y expresivos -->
+                        <circle cx="48" cy="57" r="11" fill="white"/>
+                        <circle cx="72" cy="57" r="11" fill="white"/>
+                        <circle cx="48" cy="57" r="7" fill="#1a1a2e"/>
+                        <circle cx="72" cy="57" r="7" fill="#1a1a2e"/>
+                        <circle cx="50" cy="54" r="3" fill="white"/>
+                        <circle cx="74" cy="54" r="3" fill="white"/>
+                        <!-- Cresta colorida -->
+                        <ellipse cx="50" cy="42" rx="7" ry="12" fill="#E74C3C" transform="rotate(-20 50 42)"/>
+                        <ellipse cx="60" cy="38" rx="7" ry="14" fill="#9B59B6"/>
+                        <ellipse cx="70" cy="42" rx="7" ry="12" fill="#3498DB" transform="rotate(20 70 42)"/>
+                        <!-- Patas -->
+                        <line x1="50" y1="106" x2="40" y2="125" stroke="#FFD700" stroke-width="4" stroke-linecap="round"/>
+                        <line x1="70" y1="106" x2="80" y2="125" stroke="#FFD700" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Dedos -->
+                        <line x1="40" y1="125" x2="28" y2="130" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="40" y1="125" x2="38" y2="135" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="80" y1="125" x2="92" y2="130" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="80" y1="125" x2="82" y2="135" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-name">Coco</h3>
+                    <p class="card-origin">🏠 Casa de Amigos Imaginarios</p>
+                    <p class="card-ability">🥚 ¡Pone huevos sorpresa!</p>
+                </div>
+                <div class="card-select-btn">¡ELEGIR!</div>
             </div>
         </div>
-        
-        <div class="info">
-            <p>💡 Consejos: Mantén todas las estadísticas por encima de 0 para que tu mascota sea feliz.</p>
+
+        <p class="select-footer">🌟 Cada mascota tiene poderes únicos 🌟</p>
+    </div>
+</div>
+
+<!-- Efectos globales (position:fixed, visibles en cualquier pantalla) -->
+<div class="bubbles-container" id="bubblesContainer"></div>
+<div class="zzz-container" id="zzzContainer"></div>
+<div class="confetti-container" id="confettiContainer"></div>
+<div class="food-fly-container" id="foodFlyContainer"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  PANTALLA 2: JUEGO PRINCIPAL              -->
+<!-- ══════════════════════════════════════════ -->
+<div id="screen-game" class="screen-container">
+    <!-- Fondo animado -->
+    <div class="game-bg" id="gameBg"></div>
+    <div class="bg-particles" id="bgParticles"></div>
+
+    <div class="game-layout">
+        <!-- Header -->
+        <div class="game-header">
+            <div class="pet-info-bar">
+                <span class="pet-name-display" id="petNameDisplay">Jake</span>
+                <span class="age-display">Edad: <strong id="ageDisplay">0</strong>d</span>
+            </div>
+            <button class="reset-btn-small" onclick="goToSelect()">🏠</button>
+        </div>
+
+        <!-- Consola principal -->
+        <div class="console-body">
+            <!-- Pantalla LCD -->
+            <div class="lcd-outer">
+                <div class="lcd-screen" id="lcdScreen">
+                    <!-- Estrellas sparkle cuando felicidad alta -->
+                    <div class="sparkle-ring" id="sparkleRing">
+                        <div class="sparkle s1">✦</div>
+                        <div class="sparkle s2">✦</div>
+                        <div class="sparkle s3">✦</div>
+                        <div class="sparkle s4">✦</div>
+                        <div class="sparkle s5">✦</div>
+                        <div class="sparkle s6">✦</div>
+                    </div>
+
+                    <!-- Mascota principal -->
+                    <div class="pet-stage" id="petStage">
+                        <div class="pet-container" id="petContainer">
+                            <!-- SVG se inyecta aquí via JS -->
+                        </div>
+                        <!-- Burbuja de diálogo -->
+                        <div class="speech-bubble" id="speechBubble">
+                            <span id="speechText">¡Hola!</span>
+                        </div>
+                    </div>
+
+                    <!-- Indicador de ciclo día/noche -->
+                    <div class="day-night-indicator" id="dayNightIndicator">🌞</div>
+                </div>
+            </div>
+
+            <!-- Barras de estadísticas -->
+            <div class="stats-panel">
+                <div class="stat-row">
+                    <span class="stat-icon">🍕</span>
+                    <div class="stat-track">
+                        <div class="stat-bar-fill" id="hungerBar"></div>
+                    </div>
+                    <span class="stat-val" id="hungerVal">100</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-icon">😄</span>
+                    <div class="stat-track">
+                        <div class="stat-bar-fill" id="happinessBar"></div>
+                    </div>
+                    <span class="stat-val" id="happinessVal">100</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-icon">💤</span>
+                    <div class="stat-track">
+                        <div class="stat-bar-fill" id="energyBar"></div>
+                    </div>
+                    <span class="stat-val" id="energyVal">100</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-icon">🧼</span>
+                    <div class="stat-track">
+                        <div class="stat-bar-fill" id="cleanBar"></div>
+                    </div>
+                    <span class="stat-val" id="cleanVal">100</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-icon">❤️</span>
+                    <div class="stat-track">
+                        <div class="stat-bar-fill" id="healthBar"></div>
+                    </div>
+                    <span class="stat-val" id="healthVal">100</span>
+                </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="action-grid">
+                <button class="action-btn feed-btn" id="btnFeed" onclick="actionFeed()">
+                    <span class="btn-icon">🍔</span>
+                    <span class="btn-label">Alimentar</span>
+                </button>
+                <button class="action-btn play-btn" id="btnPlay" onclick="actionPlay()">
+                    <span class="btn-icon">🎮</span>
+                    <span class="btn-label">Jugar</span>
+                </button>
+                <button class="action-btn sleep-btn" id="btnSleep" onclick="actionSleep()">
+                    <span class="btn-icon">💤</span>
+                    <span class="btn-label">Dormir</span>
+                </button>
+                <button class="action-btn bath-btn" id="btnBath" onclick="actionBath()">
+                    <span class="btn-icon">🛁</span>
+                    <span class="btn-label">Bañar</span>
+                </button>
+                <button class="action-btn medicine-btn" id="btnMedicine" onclick="actionMedicine()" disabled>
+                    <span class="btn-icon">💊</span>
+                    <span class="btn-label">Medicina</span>
+                </button>
+            </div>
+
+            <!-- Récords -->
+            <div class="records-bar">
+                <span>🏆 Récord: <strong id="recordAge">0</strong>d</span>
+                <span>🐾 Mascotas: <strong id="petsCount">0</strong></span>
+            </div>
         </div>
     </div>
-    
-    <script src="game.js"></script>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  PANTALLA 3: MINI-JUEGO                   -->
+<!-- ══════════════════════════════════════════ -->
+<div id="screen-minigame" class="screen-container">
+    <div class="minigame-bg" id="minigameBg"></div>
+    <div class="minigame-ui">
+        <div class="minigame-header">
+            <h2 id="minigameTitle">¡Atrapa Todo!</h2>
+            <div class="minigame-stats">
+                <span>⭐ <strong id="mgScore">0</strong></span>
+                <span>⏱ <strong id="mgTimer">15</strong>s</span>
+            </div>
+        </div>
+        <div class="minigame-field" id="minigameField">
+            <!-- Objetos generados dinámicamente -->
+        </div>
+        <div class="minigame-result" id="minigameResult" style="display:none">
+            <div class="result-content">
+                <div class="result-pet" id="resultPet"></div>
+                <h2 id="resultTitle">¡Genial!</h2>
+                <p id="resultMsg">Atrapaste <strong id="resultScore">0</strong> objetos</p>
+                <p id="resultBonus">+<strong id="resultHappiness">0</strong> Felicidad</p>
+                <button class="result-btn" onclick="endMinigame()">¡Seguir cuidando!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  PANTALLA 4: GAME OVER                    -->
+<!-- ══════════════════════════════════════════ -->
+<div id="screen-gameover" class="screen-container">
+    <div class="gameover-bg"></div>
+    <div class="gameover-content">
+        <div class="gameover-emoji" id="gameoverPet">😢</div>
+        <h1 class="gameover-title">Oh no...</h1>
+        <p class="gameover-msg" id="gameoverMsg">Tu mascota nos dejó.</p>
+        <div class="gameover-stats">
+            <div class="go-stat">📅 Vivió <strong id="goAge">0</strong> días</div>
+            <div class="go-stat">🏆 Tu récord: <strong id="goRecord">0</strong> días</div>
+        </div>
+        <button class="gameover-btn" onclick="goToSelect()">
+            🔄 Elegir nueva mascota
+        </button>
+    </div>
+</div>
+
+<script src="game.js"></script>
 </body>
 </html>
