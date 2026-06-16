@@ -1,126 +1,72 @@
-# 🐾 Tamagotchi Virtual
+# 🐾 Tamagotchi Épico
 
-Un divertido juego de mascota virtual estilo Tamagotchi creado con HTML, CSS y JavaScript vanilla. ¡Cuida, alimenta y juega con tu mascota para mantenerla feliz y saludable!
+Juego de mascota virtual interactivo con 3 personajes icónicos del mundo del cartoon: **Jake el Perro** (Hora de Aventura), **Miau** (Equipo Rocket de Pokémon) y **Coco** (Foster's Home for Imaginary Friends). Cuídalos, juega con ellos y evita que sus estadísticas lleguen a cero. ¡100% vanilla JS, sin librerías externas!
 
 ## 🎮 Demo
 
-Puedes jugar aquí: [Tamagotchi Virtual](https://[tu-usuario].github.io/[nombre-repo]/)
+> Abre `index.html` directamente en el navegador — no necesita servidor.
 
 ## ✨ Características
 
-- 🐣 **Sistema de evolución**: Tu mascota crece con el tiempo (huevo → pollito → adulto)
-- 📊 **4 estadísticas dinámicas**: Salud, Hambre, Felicidad y Energía
-- ⚠️ **Sistema de muerte**: Si descuidas a tu mascota, puede morir
-- 💾 **Persistencia de datos**: El nombre se guarda en localStorage
-- 📱 **Diseño responsive**: Funciona perfectamente en móviles y desktop
-- 🎨 **Animaciones CSS**: La mascota tiene animaciones divertidas
-- 🎯 **Interfaz intuitiva**: Fácil de usar para todas las edades
+- 🐶😺🧡 **3 mascotas únicas** con SVG dibujado a mano, frases propias y poderes especiales
+- 📊 **5 estadísticas** animadas: Hambre, Felicidad, Energía, Limpieza y Salud
+- 🎯 **Mini-juego de 15 segundos** — atrapa objetos que caen para subir la felicidad
+- 🎵 **Sonidos procedurales** generados con Web Audio API (sin archivos de audio externos)
+- ✨ **Efectos visuales**: confeti, burbujas de baño, ZZZ flotantes, monedas, huevos sorpresa, sparkles
+- 🌞🌙 **Ciclo día/noche** visual que cambia cada ~2 minutos
+- 💬 **Globo de diálogo** con frases urgentes cuando una estadística entra en peligro
+- 💾 **LocalStorage**: guarda récord de edad y total de mascotas cuidadas
+- 📱 **Responsive** — funciona en móvil y desktop
+- 🚫 **Sin dependencias** — HTML + CSS + JS puro
 
-## 🎯 Cómo Jugar
+## 🐾 Las Mascotas
 
-### Acciones disponibles:
-- **🍔 Alimentar**: Aumenta el hambre y un poco la salud
-- **⚽ Jugar**: Aumenta la felicidad pero consume energía y hambre
-- **😴 Dormir**: Recupera energía y un poco de salud
-- **💊 Curar**: Recupera salud cuando está enfermo
+| Mascota | Origen | Poder especial | Mini-juego |
+|---|---|---|---|
+| 🐶 **Jake el Perro** | Hora de Aventura | Se estira y contorsiona feliz | Atrapa huesos y estrellas |
+| 😺 **Miau** | Pokémon — Equipo Rocket | Lluvia de monedas de oro | Atrapa monedas y diamantes |
+| 🧡 **Coco** | Foster's Home | Pone huevos de colores | Atrapa huevos arcoíris |
 
-### Consejos:
-- Mantén todas las estadísticas por encima de 0
-- Si la energía está baja, la mascota no querrá jugar
-- El hambre muy bajo afecta la salud
-- ¡No dejes que la salud llegue a 0!
+## 🕹️ Cómo Jugar
 
-## 🚀 Instalación Local
+1. Elige tu mascota en la pantalla de selección
+2. Mantén las 5 barras en verde usando los botones de acción:
+   - **🍔 Alimentar** — sube hambre + animación de comida volando
+   - **🎮 Jugar** — abre el mini-juego, sube felicidad según puntuación
+   - **💤 Dormir** — recupera energía (presiónalo de nuevo para despertar)
+   - **🛁 Bañar** — sube limpieza con animación de burbujas
+   - **💊 Medicina** — se activa solo cuando la salud baja de 30
+3. Si la salud llega a 0, aparece la pantalla de Game Over
 
-1. Clona este repositorio:
+> Las barras bajan automáticamente. Si 2 o más estadísticas caen bajo 20 al mismo tiempo, la mascota enferma y la salud empieza a caer rápidamente.
+
+## 🚀 Instalación
+
 ```bash
-git clone https://github.com/[tu-usuario]/[nombre-repo].git
-Navega al directorio:
+git clone https://github.com/tu-usuario/tamagoshi.git
+cd tamagoshi
+# Abre index.html en el navegador, o usa un servidor local:
+npx serve .
+```
 
-bash
-cd [nombre-repo]
-Abre index.html en tu navegador o usa un servidor local:
+## 📁 Estructura
 
-bash
-# Con Python 3
-python -m http.server 8000
+```
+tamagoshi/
+├── index.html   # 4 pantallas: selección, juego, mini-juego, game over
+├── style.css    # Variables de tema, keyframes, SVG CSS, responsive
+├── game.js      # Clase Pet, Audio Engine, mini-juego, efectos, LocalStorage
+└── README.md
+```
 
-# Con Node.js (http-server)
-npx http-server
-Abre http://localhost:8000 en tu navegador
+## 🛠️ Tecnologías
 
-📁 Estructura del Proyecto
-text
-tamagotchi-virtual/
-│
-├── index.html          # Estructura HTML del juego
-├── style.css           # Estilos y animaciones CSS
-├── game.js             # Lógica del juego en JavaScript
-└── README.md           # Documentación
-🛠️ Tecnologías Utilizadas
-HTML5: Estructura semántica
+- **HTML5** semántico — sin lógica en el markup
+- **CSS3** — variables, `@keyframes`, grid, `backdrop-filter`, `clip-path`
+- **JavaScript ES2022** — clases con campos estáticos, `const`/`let`, arrow functions
+- **Web Audio API** — 7 sonidos generados proceduralmente con osciladores
+- **localStorage** — persistencia de récords entre sesiones
 
-CSS3:
+## 📝 Licencia
 
-Flexbox y Grid
-
-Animaciones y transiciones
-
-Degradados y sombras
-
-Diseño responsive
-
-JavaScript Vanilla:
-
-Programación Orientada a Objetos
-
-Manipulación del DOM
-
-localStorage para persistencia
-
-Intervalos y temporizadores
-
-🎨 Personalización
-Puedes personalizar el juego modificando:
-
-Emojis de mascota: Cambia el array petEmojis en game.js
-
-Colores: Modifica las variables CSS en style.css
-
-Estadísticas: Ajusta los valores de incremento/decremento en los métodos
-
-Velocidad: Cambia el intervalo del temporizador (actualmente 5000ms)
-
-🤝 Contribuciones
-Las contribuciones son bienvenidas. Puedes:
-
-Hacer fork del repositorio
-
-Crear una rama para tu feature (git checkout -b feature/NuevaCaracteristica)
-
-Commit tus cambios (git commit -m 'Añadir nueva característica')
-
-Push a la rama (git push origin feature/NuevaCaracteristica)
-
-Abrir un Pull Request
-
-🐛 Bugs Conocidos
-El temporizador puede desincronizarse si la pestaña está en segundo plano
-
-El localStorage puede no funcionar en algunos navegadores en modo incógnito
-
-📝 Licencia
-Este proyecto está bajo la Licencia MIT. Ver el archivo LICENSE para más detalles.
-
-👤 Autor
-Creado con ❤️ por Sr. Claude
-
-
-🙏 Agradecimientos
-Inspirado en los clásicos Tamagotchi de Bandai
-
-Emojis proporcionados por Unicode
-
-Comunidad de desarrolladores web
-
-⭐ Si te gusta este proyecto, no olvides darle una estrella en GitHub! ⭐
+MIT — libre para usar, modificar y distribuir.
